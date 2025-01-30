@@ -31,7 +31,7 @@ def run_notebook(notebook_path):
 
 
 # Specify the path to your .ipynb file
-run_notebook("C:/Users/raahu/Desktop/ipl2025pre/r1.ipynb")
+run_notebook("C:/Users/raahu/Desktop/ipl2025pre/IPL2025pre/r1.ipynb")
 
 
 
