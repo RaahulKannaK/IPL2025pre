@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>IPL Prediction</title>
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .select-team-button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Choose Two IPL Teams</h1>
+        <form id="team-form">
+            <div class="form-container">
+                <div class="form-group">
+                    <label for="team2">Second Team:</label>
+                    <select id="team2">
+                        <option>mi</option>
+                        <option>dc</option>
+                        <option>csk</option>
+                        <option>RCB</option>
+                        <option>KKR</option>
+                        <option>rr</option>
+                        <option>Srh</option>
+                        <option>Pbks</option>
+                        <option>Lsg</option>
+                        <option>Gt</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="team1">First Team:</label>
+                    <select id="team1">
+                        <option>mi</option>
+                        <option>dc</option>
+                        <option>csk</option>
+                        <option>RCB</option>
+                        <option>KKR</option>
+                        <option>RR</option>
+                        <option>srh</option>
+                        <option>pbks</option>
+                        <option>lsg</option>
+                        <option>gt</option>
+                    </select>
+                </div>
+            </div>
+
+            <button id="select-team-button" class="select-team-button">Submit</button>
+        </form>
+
+        <p id="selected-team"></p>
+    </div>
+
+    <script>
+        document.getElementById('team-form').addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent form submission
+
+            let team1 = document.getElementById('team1').value;
+            let team2 = document.getElementById('team2').value;
+
+            if (team1 === team2) {
+                document.getElementById('selected-team').innerText = "Both teams cannot be the same!";
+            } else {
+                document.getElementById('selected-team').innerText = `You selected ${team1} and ${team2}.`;
+                fetch('http://localhost:5000/save?team1=' + team1 + '&team2=' + team2);
+            }
+        });
+    </script>
+</body>
+</html>
